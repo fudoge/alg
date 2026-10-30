@@ -4,6 +4,7 @@
   -  `query(a, b)`: 정점 a에서 b까지의 경로에 여러 연산들을 적용. (ex. sum, max등)
 
 (아래 트리에서 정점 왼쪽 위 숫자는 정점의 id, 정점 속 숫자는 값이다.)
+![Tree](tree.png)
 
 작업을 하나 처리하는데 나이브한 경우에서 기본적으로 `O(n)`의 시간복잡도가 걸린다.
 
@@ -48,6 +49,8 @@ heavy edge는 서브트리에서 가장 큰 서브트리를 가진 자식으로 
 9
 ```
 
+![Tree Decomposed](tree-decomposed.png)
+
 #### 거쳐야 하는 Heavy Path의 개수
 
 **어떤 노드이던, 루트까지 O(log N)개의 Heavy Path를 거치면 도달가능하다.** 
@@ -55,8 +58,10 @@ heavy edge는 서브트리에서 가장 큰 서브트리를 가진 자식으로 
 트리에서 노드 $v$의 서브트리의 크기를 $S(v)$라고 하자.
 
 다음이 성립한다:
+$$$\displaystyle S( v) \ =\ 1\ +\ \sum _{c\in children( v)} S( c) \ $$$
 
 이때, 부모 $v$와 자식 $c$를 연결하는 간선은 다음 조건을 만족하면 heavy edge라고 한다:
+$$$\displaystyle S( c) \ \geqslant \ \frac{S( v)}{2} \ \Longleftrightarrow edge( v,c) \ \text{is heavy} \ $$$
 
 만족하지 않는 간선들은 모두 light edge이다.
 
@@ -64,9 +69,15 @@ heavy edge는 서브트리에서 가장 큰 서브트리를 가진 자식으로 
 
 light edge를 $k$번 지난 정점의 서브트리 크기는 
 
+$$$\displaystyle S( v_{k}) \ < \ \frac{N}{2^{k}}$$$
+
  이고, 서브트리의 크기는 최소 1이므로,
 
+$$$\displaystyle 1\ < \ \frac{N}{2^{k}}$$$
+
 양변에 로그를 취하면
+
+$$$\displaystyle k\ < \ log_{2} N$$$
 
 이 된다.
 
