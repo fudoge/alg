@@ -16,7 +16,7 @@ HLD는 이를 최적화해준다.
 - 검색 쿼리는 $O(log^2 N)$
 - 값 수정 쿼리는 $O(log N)$
 
-### 핵심 아이디어
+## 핵심 아이디어
 
 heavy edge는 서브트리에서 가장 큰 서브트리를 가진 자식으로 가는 간선이라고 보면 된다.
 
@@ -50,7 +50,7 @@ heavy edge는 서브트리에서 가장 큰 서브트리를 가진 자식으로 
 
 ![Tree Decomposed](tree-decomposed.png)
 
-#### 거쳐야 하는 Heavy Path의 개수
+### 거쳐야 하는 Heavy Path의 개수
 
 **어떤 노드이던, 루트까지 O(log N)개의 Heavy Path를 거치면 도달가능하다.**
 
@@ -111,7 +111,7 @@ Heavy Path내부에서는 Heavy Edge만 이동해서 같은 Path에 있고, 다�
 - Heavy Edge로 이동: 같은 Path에 속하므로 몇 번 이동하든 상관없다
 - Light Edge로 이동: 다른 Path로 넘어가는데, 서브트리의 크기는 절반 미만으로 감소한다.
 
-### HLD 실전 적용
+## HLD 실전 적용
 
 가장 대표적인 HLD의 문제는 두 정점 사이의 경로의 최댓값을 구하거나, 합을 구하는 문제이다. 각 heavy chain마다의 segment tree를 만들어서 관리할 수 있다.
 
@@ -135,7 +135,7 @@ Heavy Path내부에서는 Heavy Edge만 이동해서 같은 Path에 있고, 다�
 
 구현을 할 때에는 모든 heavy path마다 세그먼트 트리를 만들지 말고, 단일 세그먼트 트리에서 disjoint segments를 유지하면 된다. 업데이트의 시간복잡도는 세그먼트 트리를 업데이트 하는 것이므로 $O(log N)$이다.
 
-### 초기화 단계
+## 초기화 단계
 
 주요 자료구조는 다음과 같다:
 
@@ -245,7 +245,7 @@ pos배열에는 다음과 같이 담긴다:
 
 항상 범위 내 맨 앞이 head이다.
 
-### 쿼리
+## 쿼리
 
 ```cpp
 long long query(int a, int b) {
@@ -275,11 +275,11 @@ long long query(int a, int b) {
 
 이제, `a`와 `b`는 같은 체인에 있다. `a ~ b`의 구간쿼리까지 누적하고 리턴하면 된다.
 
-### 값 업데이트
+## 값 업데이트
 
 값을 업데이트 하는 부분은 간단하다. 세그먼트 트리의 업데이트의 wrapper만 해주면 된다.
 
-### 구현(C++)
+## 구현(C++)
 
 실제 세그먼트 트리까지 붙이고, 쿼리를 날려보자.
 
@@ -290,10 +290,10 @@ long long query(int a, int b) {
 93
 ```
 
-### References
+## References
 
 [https://cp-algorithms.com/graph/hld.html](https://cp-algorithms.com/graph/hld.html)
 
-### 관련 문제 풀어보기
+## 관련 문제
 
 - [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/description](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/description)
