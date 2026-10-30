@@ -1,3 +1,5 @@
+# Heavy-light decomposition
+
 트리에서 두 가지 작업을 한다고 해보자:
 
 - `update(x, k)`: x번째 정점의 값을 k로 변경
