@@ -1,5 +1,7 @@
 # Segment Tree (with Lazy Propagation)
 
+세그먼트 트리 자체가 생소하다면 [세그먼트 트리 글](../segment-tree/README.md)을 먼저 읽어보자.
+
 세그먼트 트리를 통해 우리는 구간 연산에 대해 $O(log n)$으로 구할 수 있게 되었다.
 이전의 업데이트는 단일 요소만 변경하였는데, 구간에 대해서 변경할 수 없을까?
 
